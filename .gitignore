@@ -1,0 +1,21 @@
+# secrets — JANGAN PERNAH commit
+secrets/
+keystore/
+*.pass
+*.token
+.env
+.DS_Store
+
+# foundry build artifacts
+contracts/cache/
+contracts/out/
+contracts/broadcast/
+
+# media besar & screenshot kerja
+shots/
+*.mp4
+*.png.bak
+
+# backup files
+*.bak-*
+*.bak

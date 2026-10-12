@@ -1,0 +1,13 @@
+QUANTHOOD — X bio final candidates (12 Okt):
+
+DRAFT LIMP (original):
+Post-quantum security for Ethereum. We watch for the moment quantum computers can break ECDSA keys, and keep your assets safe when it comes.
+
+REFINED 1 (recommended):
+Post-quantum security, proven on-chain. We watch for the moment quantum computers break ECDSA keys — and lock your assets when it comes. Robinhood Chain.
+
+REFINED 2 (pendek, punchy):
+We watch for the moment quantum computers break ECDSA keys. Live, on-chain, with bounties on proof. Your alarm for the quantum era.
+
+REFINED 3 (closest ke draft Limp):
+Post-quantum security for on-chain assets. We watch for the moment quantum computers can break ECDSA keys — and keep your assets safe when it comes.

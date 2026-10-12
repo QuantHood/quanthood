@@ -1,0 +1,126 @@
+{
+  "scheme": "SHA256('quanthood.canary.v1|<rung>|<bits>'): training rungs (0..6) truncated mod 2^bits \u2014 key truly lives in the advertised keyspace and can be found by brute force; armed rungs (7..11) mod N full-size \u2014 nobody holds these private keys.",
+  "v": 2,
+  "rungs": [
+    {
+      "rung": 0,
+      "bits": 16,
+      "keyspace": "2^16",
+      "privateKey": "0x358",
+      "pubX": "0x7766bb445889a2722dc3ec75448c5f0a421b73345c26667143be9f75941d229",
+      "pubY": "0x17ea1da63f24d34d00e85c6cd52caa6b6ed426cddcfb21049c7bc0461aa3e47d",
+      "address": "0x0e4d535c5cd3ce0ac5058e968c62e8a1ea235b8f",
+      "armed": false
+    },
+    {
+      "rung": 1,
+      "bits": 32,
+      "keyspace": "2^32",
+      "privateKey": "0xfd9b12ac",
+      "pubX": "0xec05efce5e8a45f842a1501e0a7bd8e54667a9986a8b40657c35956ed41c057b",
+      "pubY": "0xd3b583cc22f9825c7461f20a92fcbc9b9e47d3b309f98d7a166e1d5991b6fce1",
+      "address": "0x99bfb842d5503b7da3e277a263b6cc90560e877a",
+      "armed": false
+    },
+    {
+      "rung": 2,
+      "bits": 48,
+      "keyspace": "2^48",
+      "privateKey": "0xaa5c6d09e942",
+      "pubX": "0xc198f91d957f65ee04ee2cc7692a9207bb0c5bb653c2d3682580c46f882a343a",
+      "pubY": "0x941da62afd8297d7ef63fbd2bcddd52722e51f6eea5379e500db9a69db273370",
+      "address": "0xeb4058bea58d1ffc8b8ef0fa6cabac7de7d6bcca",
+      "armed": false
+    },
+    {
+      "rung": 3,
+      "bits": 64,
+      "keyspace": "2^64",
+      "privateKey": "0x16017785fb333898",
+      "pubX": "0x5efd635af6a806106091150b46138664f6f0fcedca4b256b4e319cecad33b8fd",
+      "pubY": "0xf010a573148ea57e6ac36ca9ba83075c19dba7104a5ee8f0014dd8d31b6919a8",
+      "address": "0x083f2fe3fb2e7648b80576123f463e57eadf5b4e",
+      "armed": false
+    },
+    {
+      "rung": 4,
+      "bits": 80,
+      "keyspace": "2^80",
+      "privateKey": "0xcf0d2fd72ff7712c3882",
+      "pubX": "0xff62d513522207ea29a263fdf8e2b760d755dfd6e94b44b4c7d56c912e42684f",
+      "pubY": "0x257040477ce288280a9fb76898e1b88611f61d6c18f3e515d2f4144cfabadd21",
+      "address": "0x06233eb08887d6ff1257ab7bd04bc6e4de8e2789",
+      "armed": false
+    },
+    {
+      "rung": 5,
+      "bits": 96,
+      "keyspace": "2^96",
+      "privateKey": "0x6b8a85a72c6be59c82efda2",
+      "pubX": "0x2cbe350405c3a5c2a8f68c1e3211feeaba211dd7208ee7376b0f0d4a38d412c1",
+      "pubY": "0x13165c7088c81ff41fb4cc914acc2d41cd3d13e727769e907548f50b9e1caef2",
+      "address": "0x1e85b5ac9a2a471cb21ea043003ce265cb179551",
+      "armed": false
+    },
+    {
+      "rung": 6,
+      "bits": 112,
+      "keyspace": "2^112",
+      "privateKey": "0x305e821883e8b4d7567957347d2e",
+      "pubX": "0xf9c587747c9d2130a194bb5b7531d670da54758e11f02fcaced98b73b2e577d8",
+      "pubY": "0xc9144bd28b78fbc0c6be3b1e53b49a4535652bec42fc579339549359b6737b82",
+      "address": "0x0a34e50ef5bf05516e34f49ae0b6fe83c72322e2",
+      "armed": false
+    },
+    {
+      "rung": 7,
+      "bits": 128,
+      "keyspace": "2^256 (full scalar, nobody holds)",
+      "privateKey": "0xef56c65d0edb92e700d390e6db5b382d2ce1861764df933cbd697eac3e389805",
+      "pubX": "0x36e63e3149907b198c12d9ecdd799b41925730c65e6f06c3c929028d95940136",
+      "pubY": "0x2132ce6af101cfae6ae2277e5bfec7783e2012004920b90235035cb712e34c54",
+      "address": "0x928d3ee32865830ecb57ddb29c9a6e2cfac3c531",
+      "armed": true
+    },
+    {
+      "rung": 8,
+      "bits": 144,
+      "keyspace": "2^256 (full scalar, nobody holds)",
+      "privateKey": "0xcdcff05b1c8a76abf484cb8289bdee1a96fcf6e20951f03104ee55ef386b18c9",
+      "pubX": "0x4661ad1d0797f61a0655d1b164f5380b92ec3e561a0a9573290a1d6927c81e85",
+      "pubY": "0x20f8d7a9220c8598314b1ef4f5d68002b5bb9b4643248cf60d382ae3c29ef36",
+      "address": "0x17331bb570fce5e5c93bc0b8034158c98ad19885",
+      "armed": true
+    },
+    {
+      "rung": 9,
+      "bits": 160,
+      "keyspace": "2^256 (full scalar, nobody holds)",
+      "privateKey": "0x350f1036a38e1281b2a302ade6bc165a93638ce68461e29216064f066885f339",
+      "pubX": "0x727f839cf2af8de29599ae86572b868f25c38cb667b9feab3f672578eff56f46",
+      "pubY": "0xcb54a05d4ea9821dcc70f2c3374f1543650c91ac58075e79277cc61a6092684d",
+      "address": "0x5bb84316cc5e127108b761ece01f52782e220be0",
+      "armed": true
+    },
+    {
+      "rung": 10,
+      "bits": 176,
+      "keyspace": "2^256 (full scalar, nobody holds)",
+      "privateKey": "0x636e9256d67e316b083626f23233145f1b7b5ee939bf0dca2f9383a08e16d97",
+      "pubX": "0xede129aa9908a2ca281b5cac104c2d8524a978c0a234686ba64893f89151688c",
+      "pubY": "0xcab15ddbbe83d354c1ca80a7a7a8c25d0ba404a1b70b40bff820fff58d20dde0",
+      "address": "0x950da403a38710ea0999fc45290fab71bddd43ab",
+      "armed": true
+    },
+    {
+      "rung": 11,
+      "bits": 192,
+      "keyspace": "2^256 (full scalar, nobody holds)",
+      "privateKey": "0x32d9118be21e18d86fd89703a891ae546e2efe03058c666889832faad9a91b62",
+      "pubX": "0x4275649e2c075be631860edd9c0d2daef66b3d90e6ab6d9b964b191564c7a403",
+      "pubY": "0x5f977ff30dc3bf1432dae167ac2d318fcb5138da6c7ff9c609c6182925594990",
+      "address": "0xbddea323167debbfc8982dcc985568c230fdfab8",
+      "armed": true
+    }
+  ]
+}

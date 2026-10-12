@@ -1,0 +1,58 @@
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.36;
+
+import {Script, console2} from "forge-std/Script.sol";
+import {QuanthoodCanary} from "../src/QuanthoodCanary.sol";
+import {QuanthoodOracle} from "../src/QuanthoodOracle.sol";
+import {QuanthoodArk} from "../src/QuanthoodArk.sol";
+
+/// @notice Deploy the Quanthood suite on Robinhood Chain (4663).
+///         Run with --private-key (never commit keys). Requires chainid == 4663.
+contract DeployQuanthood is Script {
+    function run() external {
+        require(block.chainid == 4663, "chain must be 4663");
+        // NUMS ladder v2: scalar_i = SHA256("quanthood.canary.v1|<i>|<bits>"),
+        // training rungs (0..6) truncated mod 2^bits so the key truly lives in
+        // the advertised keyspace; armed rungs (7..11) kept mod N full-size so
+        // nobody holds those private keys. Provenance in config/canary_pubkeys.json.
+        uint256[2][12] memory pubkeys;
+        pubkeys[0] = [3375421240698963741144440113723490961725573859047271641936248195740948615721, 10816842363218296002486410475951752019193784475984521169070548422077102417021];
+        pubkeys[1] = [106756321582056893716681420307721329737185019681825281719326759250006789326203, 95758720002077905230729642497483991685582424929630525878081844356930956885217];
+        pubkeys[2] = [87566659862839471595023394065827703165921711100846493401821004344278869750842, 66994687004111058572074780010441337722551697389274503039207422219387209724784];
+        pubkeys[3] = [42965105799475448738151844053132649276969546779016979054569669398753831008509, 108584495103726401707685632650021604131943997200828223626600590184335790381480];
+        pubkeys[4] = [115514397993941671189433610162882888055962475380312242754650510931914515441743, 16933905907910357347812469505195256703117403088590348606182662453236449598753];
+        pubkeys[5] = [20237832180974826851720579477832231414227758793317591348922529376196252406465, 8633452753089915529343560645858653618700564391053246429644668824126922469106];
+        pubkeys[6] = [112974903045228666088465391897049931645595560491239557896634875491903103924184, 90950742813785099373723130344937006690544212113150603918474249043854929132418];
+        pubkeys[7] = [24831697885453534342909654860465490389030148632146709624875454352154565017910, 15016090999369503006180141532832854871482032804095316411071823650454226816084];
+        pubkeys[8] = [31834478350868297889843699405560770378513233113297397160768167111524283326085, 932104853875679973115399032942068671989677665893274757365635340009762058038];
+        pubkeys[9] = [51788962675800126132503058781108757749021626617711791546249920309345389997894, 91969030210819078065374161228739313979220522293409168568342267318847147239501];
+        pubkeys[10] = [107595973274716755574683148207661614045848242400722514295831645496807175317644, 91680575130987721393403831992246005755373537467397584588562164485208309554656];
+        pubkeys[11] = [30060063552017673208082043161545933754105764391514949771074172576983417332739, 43237397596694510639255448873712309218851063130239750438461950212745062861200];
+
+
+        bool[12] memory armed;
+        uint256[12] memory bits;
+        for (uint256 i = 0; i < 12; i++) {
+            bits[i] = 16 * (i + 1);
+            armed[i] = bits[i] >= 128;
+        }
+
+        vm.startBroadcast();
+        QuanthoodOracle oracle = new QuanthoodOracle();
+        QuanthoodCanary canary = new QuanthoodCanary(address(oracle), pubkeys, armed, bits);
+        oracle.setCanary(address(canary));
+        QuanthoodArk ark = new QuanthoodArk(address(oracle));
+        vm.stopBroadcast();
+
+        address deployer = msg.sender;
+        console2.log("deployer        :", deployer);
+        console2.log("QuanthoodOracle :", address(oracle));
+        console2.log("QuanthoodCanary :", address(canary));
+        console2.log("QuanthoodArk    :", address(ark));
+        require(oracle.canary() == address(canary), "canary binding failed");
+        require(oracle.threatLevel() == 0, "initial level must be 0");
+        uint256[2] memory p0 = canary.rungPubkey(0);
+        require(p0[0] == pubkeys[0][0] && p0[1] == pubkeys[0][1], "rung0 pubkey mismatch");
+        console2.log("OK: oracle bound to canary, ladder verified");
+    }
+}

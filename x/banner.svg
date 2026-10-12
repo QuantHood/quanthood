@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="500" viewBox="0 0 1500 500">
+  <rect width="1500" height="500" fill="#050705"/>
+  <defs>
+    <pattern id="dots" x="0" y="0" width="36" height="36" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" fill="#17201a"/>
+    </pattern>
+    <linearGradient id="fade" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#b8ff29" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#b8ff29" stop-opacity="0.25"/>
+    </linearGradient>
+  </defs>
+  <rect width="1500" height="500" fill="url(#dots)"/>
+  <!-- ladder compressed into safe band y=130..380 -->
+  <g stroke="url(#fade)" stroke-width="3" fill="none">
+    <line x1="1090" y1="380" x2="1330" y2="380"/>
+    <line x1="1118" y1="340" x2="1330" y2="340"/>
+    <line x1="1146" y1="300" x2="1330" y2="300"/>
+    <line x1="1174" y1="260" x2="1330" y2="260"/>
+    <line x1="1202" y1="220" x2="1330" y2="220"/>
+    <line x1="1230" y1="180" x2="1330" y2="180"/>
+    <line x1="1258" y1="140" x2="1330" y2="140"/>
+  </g>
+  <g fill="#b8ff29">
+    <circle cx="1090" cy="380" r="6"/>
+    <circle cx="1118" cy="340" r="6"/>
+    <circle cx="1146" cy="300" r="6"/>
+    <circle cx="1174" cy="260" r="6"/>
+    <circle cx="1202" cy="220" r="6"/>
+    <circle cx="1230" cy="180" r="6"/>
+    <circle cx="1258" cy="140" r="6"/>
+  </g>
+  <circle cx="1330" cy="120" r="24" fill="none" stroke="#b8ff29" stroke-width="3"/>
+  <circle cx="1330" cy="120" r="9" fill="#b8ff29"/>
+  <text x="100" y="245" font-family="monospace" font-size="92" font-weight="bold" fill="#f2f5f0" letter-spacing="6">QUANTHOOD</text>
+  <text x="104" y="310" font-family="monospace" font-size="30" fill="#9aa79b" letter-spacing="2">THE QUANTUM CANARY · PROVEN ON-CHAIN</text>
+  <text x="104" y="368" font-family="monospace" font-size="24" fill="#b8ff29" letter-spacing="1">12 KEYS · 16→192 BIT · BOUNTIES PAID ON PROOF · ROBINHOOD CHAIN</text>
+  <rect x="0" y="0" width="1500" height="500" fill="none" stroke="#1a231c" stroke-width="2"/>
+</svg>

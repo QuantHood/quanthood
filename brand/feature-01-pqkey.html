@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Quanthood feature card — PQ key</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Doto:wght@500;700;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+:root{--bg:#060606;--panel:#0b0d09;--line:#1d2117;--acc:#c6ff3a;--acc-dim:rgba(198,255,58,.14);--ink:#f2f4ec;--dim:#8b917f;--warn:#ffb03a}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:"IBM Plex Mono",monospace;width:1280px;height:720px;overflow:hidden}
+.wrap{width:1280px;height:720px;display:flex;flex-direction:column;border:1px solid var(--line)}
+.sysbar{display:grid;grid-template-columns:auto 1fr 1fr 1fr 1fr auto;align-items:stretch;border-bottom:1px solid var(--line);background:#080907}
+.sysbar .cell{padding:12px 16px;border-left:1px solid var(--line);display:flex;flex-direction:column;gap:3px;justify-content:center}
+.sysbar .cell:first-child{border-left:none}
+.lbl{font-size:9px;letter-spacing:.22em;color:var(--dim);text-transform:uppercase}
+.val{font-size:12.5px;color:var(--ink);white-space:nowrap}
+.brand{font-family:"Doto",monospace;font-weight:900;font-size:19px;letter-spacing:.05em;display:flex;align-items:center;gap:8px}
+.brand .dotmark{color:var(--acc);font-family:"IBM Plex Mono",monospace;font-weight:600}
+.cross{padding:12px 18px;color:var(--dim);font-size:15px;display:flex;align-items:center}
+.stage{flex:1;display:flex;flex-direction:column;padding:22px 30px 12px}
+.flabel{font-size:11px;letter-spacing:.18em;color:var(--acc)}
+.flabel .sq{display:inline-block;width:8px;height:8px;background:var(--acc);margin-right:8px}
+.titlerow{display:flex;align-items:flex-start;justify-content:space-between;gap:24px}
+h1{font-family:"Doto",monospace;font-weight:900;font-size:52px;line-height:1.02;margin:10px 0 8px;letter-spacing:.01em}
+h1 .key{color:var(--acc)}
+.sub{font-size:13px;color:var(--dim);max-width:640px;line-height:1.5}
+.seedviz{flex-shrink:0;border:1px solid var(--line);background:var(--panel);padding:12px 14px;display:flex;flex-direction:column;gap:8px;align-items:center}
+.seedgrid{display:grid;grid-template-columns:repeat(16,7px);grid-auto-rows:7px;gap:3px}
+.seedgrid i{background:#20251a;border-radius:1px}
+.seedgrid i.g{background:var(--acc)}
+.seedgrid i.m{background:#5a6b33}
+.cols{display:grid;grid-template-columns:1.05fr 1fr 1fr;gap:14px;margin-top:18px;flex:1}
+.panel{border:1px solid var(--line);background:var(--panel);display:flex;flex-direction:column}
+.panel header{padding:10px 14px;border-bottom:1px solid var(--line);font-size:10px;letter-spacing:.2em;color:var(--acc)}
+.panel .body{padding:12px 14px;display:flex;flex-direction:column;gap:9px;font-size:12px}
+.code{background:#070805;border:1px solid var(--line);padding:10px 11px;font-size:11.5px;line-height:1.55;white-space:pre;color:#d7e6b8}
+.code b{color:var(--acc);font-weight:600}
+.flow{display:flex;flex-direction:column;gap:5px;font-size:10.5px;color:var(--dim)}
+.flow .frow{display:flex;align-items:center;gap:6px}
+.fbox{border:1px solid var(--line);padding:3px 7px;color:var(--ink);background:#0d0f0a;white-space:nowrap}
+.fbox.acc{border-color:var(--acc);color:var(--acc);background:var(--acc-dim)}
+.farr{color:var(--acc)}
+.mech{display:flex;flex-direction:column;gap:7px;font-size:11.5px;line-height:1.5}
+.mech .st{display:flex;gap:9px}
+.mech .n{color:var(--acc);font-weight:600;flex-shrink:0}
+.hl{color:var(--acc)}
+.sizes{display:flex;flex-direction:column;gap:9px;font-size:11px}
+.srow{display:flex;flex-direction:column;gap:3px}
+.srow .nm{display:flex;justify-content:space-between;color:var(--dim)}
+.srow .nm b{color:var(--ink);font-weight:500}
+.cells{display:flex;gap:2px}
+.cells i{width:7px;height:10px;background:#20251a}
+.cells i.on{background:var(--acc)}
+.ecdsa .cells i.on{background:#5a6b33}
+.bottom{display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--line);margin-top:14px;padding:12px 4px 6px}
+.bottom .price{font-size:12.5px;color:var(--dim)}
+.bottom .price b{color:var(--ink);font-weight:500}
+.pager{display:flex;gap:5px}
+.pager i{width:11px;height:11px;border:1px solid var(--line)}
+.pager i.on{background:var(--acc);border-color:var(--acc)}
+.cta{background:var(--acc);color:#0a0c06;font-weight:600;font-size:12px;padding:8px 16px;letter-spacing:.04em}
+.foot{display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--line);padding:9px 30px;font-size:9.5px;letter-spacing:.2em;color:var(--dim)}
+.dots{letter-spacing:4px;color:var(--acc);opacity:.7}
+.note{font-size:10px;color:var(--warn);border:1px solid rgba(255,176,58,.25);background:rgba(255,176,58,.06);padding:5px 8px;margin-top:8px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="sysbar">
+    <div class="cell"><span class="brand"><span class="dotmark">((•))</span>QUANTHOOD</span></div>
+    <div class="cell"><span class="lbl">Series</span><span class="val">FEATURE 1 / 6</span></div>
+    <div class="cell"><span class="lbl">Menu</span><span class="val">Register PQ key</span></div>
+    <div class="cell"><span class="lbl">Standard</span><span class="val">ML-DSA-44 · FIPS 204</span></div>
+    <div class="cell"><span class="lbl">Runs in</span><span class="val">Your browser</span></div>
+    <div class="cross">✛</div>
+  </div>
+
+  <div class="stage">
+    <div class="titlerow">
+      <div style="flex:1;min-width:0">
+        <div class="flabel"><span class="sq"></span>FEATURE 01 / 06 // POST-QUANTUM KEY</div>
+        <h1>PQ key<span class="key">🔑</span></h1>
+        <p class="sub">Generate a post-quantum key in your browser and commit its hash on-chain. The key never leaves your device — the chain only ever sees a 32-byte commitment, timestamped before the Moment.</p>
+      </div>
+      <div class="seedviz">
+        <div class="seedgrid" id="seedgrid"></div>
+        <span class="lbl">SEED · 32 BYTES · CSPRNG</span>
+      </div>
+    </div>
+
+    <div class="cols">
+      <div class="panel">
+        <header>■ THE FLOW (01)</header>
+        <div class="body">
+          <div class="code">seed    = 32B · <b>crypto.getRandomValues</b>
+sk, pk  = <b>ML-DSA-44.KeyGen</b>(seed)   // FIPS 204
+pubHash = <b>SHA-256</b>(pk)[0..32]
+commit  = <b>QuanthoodArk.commit</b>(pubHash)</div>
+          <div class="flow">
+            <div class="frow"><span class="fbox">CSPRNG 32B</span><span class="farr">→</span><span class="fbox">ML-DSA-44.KeyGen</span><span class="farr">→</span><span class="fbox acc">(sk, pk)</span></div>
+            <div class="frow"><span class="fbox">pubHash 32B</span><span class="farr">→</span><span class="fbox acc">Ark.commit on-chain</span></div>
+          </div>
+          <div class="note acc-note" style="border-color:rgba(198,255,58,.3);background:rgba(198,255,58,.07);color:var(--acc)">Real ML-DSA-44 (NIST FIPS 204) — keygen, signing and verification all run in your browser via an audited implementation.</div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <header>■ MECHANISM (02)</header>
+        <div class="body">
+          <div class="mech">
+            <div class="st"><span class="n">1</span><span>Your browser draws 64 bytes of secure randomness (Web Crypto CSPRNG)</span></div>
+            <div class="st"><span class="n">2</span><span>Optional mixed mode folds in high-resolution timer entropy</span></div>
+            <div class="st"><span class="n">3</span><span>The ML-DSA-44 public key hashes to a 32-byte commitment — sent to QuanthoodArk on Robinhood Chain</span></div>
+            <div class="st"><span class="n">4</span><span class="hl">Everything stays in your browser: no transaction signs your key, no server, no seed phrase. Only the hash goes on-chain.</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <header>■ SIZES (03)</header>
+        <div class="body">
+          <div class="sizes">
+            <div class="srow"><div class="nm"><span>ML-DSA-44 public key</span><b>1,312 B</b></div><div class="cells" id="c1"></div></div>
+            <div class="srow"><div class="nm"><span>ML-DSA-44 signature</span><b>2,420 B</b></div><div class="cells" id="c2"></div></div>
+            <div class="srow ecdsa"><div class="nm"><span>ECDSA public key</span><b>33 B</b></div><div class="cells" id="c3"></div></div>
+            <div class="srow ecdsa"><div class="nm"><span>ECDSA signature</span><b>65 B</b></div><div class="cells" id="c4"></div></div>
+            <div class="nm" style="margin-top:2px"><span>1 cell ≈ 100 bytes · bars clipped at 3,000 B</span><span></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom">
+      <div class="price"><b>Post-quantum keys are bigger — and prove ownership without elliptic curves.</b> That hash, committed today, is what proves the account is yours after the Quanthood Moment.</div>
+      <div class="pager" id="pager"></div>
+      <div class="cta">quanthood.tech</div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span>PUBLIC // FEATURE SERIES</span>
+    <span class="dots">· · · · · · · · · ·</span>
+    <span>QHD-01 // F01</span>
+  </div>
+</div>
+
+<script>
+const g=document.getElementById("seedgrid");
+for(let i=0;i<256;i++){const d=document.createElement("i");const r=Math.random();if(r<.16)d.className="g";else if(r<.45)d.className="m";g.appendChild(d);}
+function cells(id,total,bytes){const c=document.getElementById(id);const n=Math.min(total,Math.round(bytes/100));for(let i=0;i<total;i++){const d=document.createElement("i");if(i<n)d.className="on";c.appendChild(d);}}
+cells("c1",30,1312);cells("c2",30,2420);cells("c3",30,33);cells("c4",30,65);
+const p=document.getElementById("pager");
+for(let i=0;i<6;i++){const d=document.createElement("i");if(i===0)d.className="on";p.appendChild(d);}
+</script>
+</body>
+</html>
